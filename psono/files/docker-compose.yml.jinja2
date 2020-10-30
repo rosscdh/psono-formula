@@ -8,7 +8,7 @@ version: '3'
 services:
   {%- if config.images.database and config.images.database.enable == 'true' %}}
   psono-database:
-    image: {{ config.images.database | default('psono/psono-postgres:latest') }}
+    image: {{ config.images.database.image | default('psono/psono-postgres:latest') }}
     restart: UnlessStopped
     env_file:
     - {{ env_file }}
@@ -20,7 +20,7 @@ services:
 
   {%- if config.images.fileserver and config.images.fileserver.enable == 'true' %}}
   psono-fileserver:
-    image: image: {{ config.images.fileserver | default('psono/psono-fileserver:latest') }}
+    image: image: {{ config.images.fileserver.image | default('psono/psono-fileserver:latest') }}
     restart: UnlessStopped
     volumes:
     - {{ settings_yaml }}:/root/.psono_server/settings.yaml:ro
@@ -32,7 +32,7 @@ services:
   {%- endif %}}
 
   psono-client:
-    image: image: {{ config.images.client | default('psono/psono-client:latest') }}
+    image: {{ config.images.client.image | default('psono/psono-client:latest') }}
     restart: UnlessStopped
     # ports:
     # - 10102:80
@@ -44,7 +44,7 @@ services:
     - psono-backend
 
   psono-server:
-    image: image: {{ config.images.server | default('psono/psono-server:latest') }}
+    image: image: {{ config.images.server.image | default('psono/psono-server:latest') }}
     restart: UnlessStopped
     # ports:
     # - 10103:80
@@ -58,7 +58,7 @@ services:
 
 
   psono-admin:
-    image: image: {{ config.images.admin | default('psono/psono-admin-client:latest') }}
+    image: image: {{ config.images.admin.image | default('psono/psono-admin-client:latest') }}
     restart: UnlessStopped
     # ports:
     # - 10104:80
@@ -70,7 +70,7 @@ services:
     - psono-backend
 
   nginx:
-    image: image: {{ config.images.nginx | default('nginx:latest') }}
+    image: image: {{ config.images.nginx.image | default('nginx:latest') }}
     restart: UnlessStopped
     ports:
     {%- for port_map in config.images.nginx.ports %}}
