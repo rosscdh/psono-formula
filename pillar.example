@@ -14,7 +14,7 @@ psono:
       image: psono/psono-admin-client:latest
     # primary entrypoint
     nginx:
-      image: nginx:latest-alpine
+      image: nginx:latest
       ports:
       - '8006:80'
     # optional
