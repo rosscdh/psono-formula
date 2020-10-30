@@ -33,6 +33,12 @@ install_compose:
     - dataset: {{ config.config_json }}
 
 
+{{ config.location }}/nginx.conf:
+  file.managed:
+  - source: salt://psono/files/nginx.conf.jinja2
+  - template: jinja
+
+
 {{ config.location }}/docker-compose.yml:
   file.managed:
   - source: salt://psono/files/docker-compose.yml.jinja2
