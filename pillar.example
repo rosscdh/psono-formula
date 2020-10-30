@@ -1,0 +1,380 @@
+psono:
+  host:
+    name: pw.bienert.tech
+    port: 80
+
+  location: /opt/psono
+
+  images:
+    client:
+      image: psono/psono-client:latest
+    server:
+      image: psono/psono-server:latest
+    admin:
+      image: psono/psono-admin-client:latest
+    # primary entrypoint
+    nginx:
+      image: nginx:latest-alpine
+      ports:
+      - '8006:80'
+    # optional
+    fileserver:
+      image: psono/psono-fileserver:latest
+      enable: 'false'
+    # optional
+    database:
+      image: psono/psono-postgres:latest
+      enable: 'false'
+
+  config_json:
+    backend_servers:
+      - title: Psono.pw
+    allow_custom_server: true
+    allow_registration: true
+    allow_lost_password: true
+    authentication_methods:
+      - AUTHKEY
+      - LDAP
+    more_links:
+      - href: https://doc.psono.com/
+        title: DOCUMENTATION
+        class: fa-book
+      - href: privacy-policy.html
+        title: PRIVACY_POLICY
+        class: fa-user-secret
+      - href: https://www.psono.com
+        title: ABOUT_US
+        class: fa-info-circle
+
+  settings:
+    # generate the following six parameters with the following command
+    # docker run --rm -ti psono/psono-server:latest python3 ./psono/manage.py generateserverkeys
+    SECRET_KEY: 'lg62iUn9C4A11xKgeRXr2gle3eQbIUSJW9hkbK4AOU6bEvSJe0ZI3TOfaB92HGxD'
+    ACTIVATION_LINK_SECRET: 'WRSIGFqmZIsRegyOzkdl8L3V0e9dzdx1DkSrrlJ92BTN67La2fUfzKufVAQXuDsG'
+    DB_SECRET: '9dYKSCRcFS5HmCrYdsGsAXutAdSebAxKMmnuo0d5KBQZEJwX4UvDalEJzvNZjIGl'
+    EMAIL_SECRET_SALT: '$2b$12$8Yn6gaYuGUgpeh05xsgEOu'
+    PRIVATE_KEY: '40b2c6f7e22345b83a834c882481dec7c109b8ede3dc024a70f7a11be917a29c'
+    PUBLIC_KEY: '52a25069a0f7871bfa52a634f61555164d311f4329c55099cafb013fc3084519'
+
+    # The URL of the web client (path to e.g activate.html without the trailing slash)
+    # WEB_CLIENT_URL: 'https://www.psono.pw'
+
+    # Switch DEBUG to false if you go into production
+    DEBUG: False
+
+    # Adjust this according to Django Documentation https://docs.djangoproject.com/en/2.2/ref/settings/
+    ALLOWED_HOSTS: ['*']
+
+    # Should be your domain without "www.". Will be the last part of the username
+    ALLOWED_DOMAINS: ['pw.bienert.tech']
+
+    # If you want to disable registration, you can comment in the following line
+    # ALLOW_REGISTRATION: False
+
+    # If you want to disable the lost password functionality, you can comment in the following line
+    # ALLOW_LOST_PASSWORD: False
+
+    # If you want to enforce that the email address and username needs to match upon registration
+    # ENFORCE_MATCHING_USERNAME_AND_EMAIL: False
+
+    # If you want to restrict registration to some email addresses you can specify here a list of domains to filter
+    # REGISTRATION_EMAIL_FILTER: ['company1.com', 'company2.com']
+
+    # Should be the URL of the host under which the host is reachable
+    # If you open the url and append /info/ to it you should have a text similar to {"info":"{\"version\": \"....}
+    HOST_URL: 'https://pw.bienert.tech/server'
+
+    # The email used to send emails, e.g. for activation
+    # ATTENTION: If executed in a docker container, then "localhost" will resolve to the docker container, so
+    # "localhost" will not work as host. Use the public IP or DNS record of the server.
+    EMAIL_FROM: 'no-reply@pw.bienert.tech'
+    EMAIL_HOST: 'localhost'
+    EMAIL_HOST_USER: ''
+    EMAIL_HOST_PASSWORD : ''
+    EMAIL_PORT: 25
+    EMAIL_SUBJECT_PREFIX: ''
+    EMAIL_USE_TLS: False
+    EMAIL_USE_SSL: False
+    EMAIL_SSL_CERTFILE:
+    EMAIL_SSL_KEYFILE:
+    EMAIL_TIMEOUT:
+
+    # In case one wants to use mailgun, comment in below lines and provide the mailgun access key and server name
+    # EMAIL_BACKEND: 'anymail.backends.mailgun.EmailBackend'
+    EMAIL_BACKEND: django.core.mail.backends.console.EmailBackend
+    # MAILGUN_ACCESS_KEY: ''
+    # MAILGUN_SERVER_NAME: ''
+
+    # In case you want to offer Yubikey support, create a pair of credentials here https://upgrade.yubico.com/getapikey/
+    # and update the following two lines before commenting them in
+    # YUBIKEY_CLIENT_ID: '123456'
+    # YUBIKEY_SECRET_KEY: '8I65IA6ASDFIUHGIH5021FKJA='
+
+    # If you have own Yubico servers, you can specify here the urls as a list
+    # YUBICO_API_URLS: ['https://api.yubico.com/wsapi/2.0/verify']
+
+    # Cache enabled without belows Redis may lead to unexpected behaviour
+
+    # Cache with Redis
+    # By default you should use something different than database 0 or 1, e.g. 13 (default max is 16, can be configured in
+    # redis.conf) possible URLS are:
+    #    redis://[:password]@localhost:6379/0
+    #    rediss://[:password]@localhost:6379/0
+    #    unix://[:password]@/path/to/socket.sock?db=0
+    # CACHE_ENABLE: False
+    # CACHE_REDIS: False
+    # CACHE_REDIS_LOCATION: 'redis://127.0.0.1:6379/13'
+
+    # Disables Throttling (necessary for unittests to pass) by overriding the cache with a dummy cache
+    # https://docs.djangoproject.com/en/2.2/topics/cache/#dummy-caching-for-development
+    # THROTTLING: False
+
+    # The server will automatically connect to the license server to get a license for 10 users.
+    # For paying customers we offer the opportunity to get an offline license code.
+    #
+    # LICENSE_CODE: |
+    #   0abcdefg...
+    #   1abcdefg...
+    #   2abcdefg...
+    #   3abcdefg...
+    #   4abcdefg...
+    #   5abcdefg...
+    #   6abcdefg...
+    #   7abcdefg...
+    #   8abcdefg...
+
+    # Enables the management API, required for the psono-admin-client / admin portal (Default is set to False)
+    # MANAGEMENT_ENABLED: True
+
+    # Enables the fileserver API, required for the psono-fileserver
+    FILESERVER_HANDLER_ENABLED: True
+
+    # Enables files for the client
+    # FILES_ENABLED: False
+
+    # Allows that users can search for partial usernames
+    # ALLOW_USER_SEARCH_BY_USERNAME_PARTIAL: True
+
+    # Allows that users can search for email addresses too
+    # ALLOW_USER_SEARCH_BY_EMAIL: True
+
+    # Disables central security reports
+    # DISABLE_CENTRAL_SECURITY_REPORTS: True
+
+    # Configures a system wide DUO connection for all clients
+    # DUO_INTEGRATION_KEY: ''
+    # DUO_SECRET_KEY: ''
+    # DUO_API_HOSTNAME: ''
+
+    # If you are using the DUO proxy, you can configure here the necessary HTTP proxy
+    # DUO_PROXY_HOST: 'the-ip-or-dns-name-goes-here'
+    # DUO_PROXY_PORT: 80
+    # DUO_PROXY_TYPE: 'CONNECT'
+    # If your proxy requires specific headers you can also configure these here
+    # DUO_PROXY_HEADERS: ''
+
+    # Normally only one of the configured second factors needs to be solved. Setting this to True forces the client to solve all
+    # MULTIFACTOR_ENABLED: True
+
+    # Allows admins to limit the offered second factors in the client
+    # ALLOWED_SECOND_FACTORS: ['yubikey_otp', 'google_authenticator', 'duo']
+
+    # If you want to use LDAP, then you can configure it like this
+    #
+    # LDAP_URL: Any valid LDAP string, preferable with ldaps. usual urls are 'ldaps://example.com:636' or 'ldap://192.168.0.1:389'
+    # LDAP_DOMAIN: Your LDAP domain, is added at the end of the username to form the full username
+    # LDAP_BIND_DN: One User that can be used to search your LDAP
+    # LDAP_BIND_PASS: The password of the user specified in LDAP_BIND_DN
+    # LDAP_ATTR_GUID: The uuid attribute. e.g. on Windows 'objectGUID', but common are 'GUID' or 'entryUUID', default 'objectGUID'
+    # LDAP_OBJECT_CLASS_USER: The objectClass value to filter user objects e.g. on Windows 'user', default 'user'
+    # LDAP_OBJECT_CLASS_GROUP: The objectClass value to filter group objects e.g. on Windows 'group', default 'group'
+    # LDAP_SEARCH_USER_DN: The "root" from which downwards we search for the users
+    # LDAP_SEARCH_GROUP_DN: The "root" from which downwards we search for the groups
+    # LDAP_ATTR_USERNAME: The username attribute to try to match against. e.g. on Windows 'sAMAccountName', default 'sAMAccountName'
+    # LDAP_ATTR_EMAIL: The attribute of the user objects that holds the mail address e.g. on Windows 'mail', default 'mail'
+    # LDAP_ATTR_GROUPS: The attribute of the user objects that holds the groups e.g. on Windows 'memberOf', default 'memberOf'
+    # LDAP_REQUIRED_GROUP : The attribute to restrict access / usage. Only members of these groups can connect e.g. ['CN=groupname,OU=something,DC=example,DC=com'], default []
+    # LDAP_CA_CERT_FILE: If you want to use ldaps and don't have a publicly trusted and signed certificate you can specify here the path to your ca certificate
+    #
+    # LDAP_MEMBER_OF_OVERLAY: If your server has not this memberOf overlay, you can switch modes with this flag.
+    #                               Users will be mapped (based on their LDAP_ATTR_GROUP_MEMBER_ATTRIBUTE attribute) to groups (based on their LDAP_ATTR_MEMBERS attribute), default True
+    # LDAP_ATTR_GROUP_MEMBER_ATTRIBUTE: The user attribute that will be used to map the group memberships, default 'uid'
+    # LDAP_ATTR_MEMBERS: The group attribute that will be used to map the to the users LDAP_ATTR_GROUP_MEMBER_ATTRIBUTE attribute, default 'memberUid'
+    #
+    # To help you setup LDAP, we have created a small "testldap" command that should make things alot easier. You can execute it like:
+    # python3 psono/manage.py testldap username@something.com thePassWord
+    #
+    # For Windows AD it could look like this:
+    #
+    # LDAP : [
+    #     {
+    #         'LDAP_URL': 'ldaps://192.168.0.1:636',
+    #         'LDAP_DOMAIN': 'example.com',
+    #         'LDAP_BIND_DN': 'CN=LDAPPsono,OU=UsersTech,OU=example.com,DC=example,DC=com',
+    #         'LDAP_BIND_PASS': 'hopefully_not_123456',
+    #         'LDAP_SEARCH_USER_DN': 'OU=Users,OU=example.com,DC=example,DC=com',
+    #         'LDAP_SEARCH_GROUP_DN': 'OU=Groups,OU=example.com,DC=example,DC=com',
+    #     },
+    # ]
+    #
+    # If your server does not have the memberOf overlay, then you can also do something like this
+    #
+    # LDAP : [
+    #     {
+    #         'LDAP_URL': 'ldaps://192.168.0.1:636',
+    #         'LDAP_DOMAIN': 'example.com',
+    #         'LDAP_BIND_DN': 'CN=LDAPPsono,OU=UsersTech,OU=example.com,DC=example,DC=com',
+    #         'LDAP_BIND_PASS': 'hopefully_not_123456',
+    #         'LDAP_SEARCH_USER_DN': 'OU=Users,OU=example.com,DC=example,DC=com',
+    #         'LDAP_SEARCH_GROUP_DN': 'OU=Groups,OU=example.com,DC=example,DC=com',
+    #         'LDAP_OBJECT_CLASS_USER': 'posixAccount',
+    #         'LDAP_OBJECT_CLASS_GROUP': 'posixGroup',
+    #         'LDAP_ATTR_USERNAME': 'uid',
+    #         'LDAP_ATTR_GUID': 'entryUUID',
+    #         'LDAP_MEMBER_OF_OVERLAY': False,
+    #         'LDAP_ATTR_GROUP_MEMBER_ATTRIBUTE': 'uid',
+    #         'LDAP_ATTR_MEMBERS': 'memberUid',
+    #     },
+    # ]
+    #
+    # ATTENTION: API kays currently bypass LDAP authentication, that means API keys can still access secrets even if the
+    # user was disabled in LDAP. API keys can be disabled with COMPLIANCE_DISABLE_API_KEYS
+
+    # You also have to comment in the line below if you want to use LDAP (default: ['AUTHKEY'])
+    # For SAML authentication, you also have to add 'SAML' to the array.
+    # AUTHENTICATION_METHODS: ['AUTHKEY', 'LDAP']
+
+    # Enable Audit logging
+    # LOGGING_AUDIT: True
+
+    # To log to another destination you can specify this here, default '/var/log/psono'
+    # Never really necessary, as we will run the psono server in a docker container and can mount /var/log/psono to any
+    # location on the underlying docker host.
+    # LOGGING_AUDIT_FOLDER: '/var/log/psono'
+
+    # If you prefer server time over utc, you can do that like below (default 'time_utc')
+    # LOGGING_AUDIT_TIME: 'time_server'
+
+    # If the server logs too much for you can either whitelist or blacklist events by their event code. (default: [])
+    # LOGGING_AUDIT_WHITELIST: []
+    # LOGGING_AUDIT_BLACKLIST: []
+
+    # If you want to use SAML, then you can configure it like this as a dictionary.
+    #
+    # About the parameters:
+    #   idp->entityId: Thats the url to the metadata of your IDP
+    #   idp->singleLogoutService->url: Thats the url to the logout service of your IDP
+    #   idp->singleSignOnService->url: Thats the url to the single sign-on service of your IDP
+    #   idp->x509cert: Thats the certificate of your IDP
+    #   idp->groups_attribute: The attribute in the SAML response that holds your groups
+    #   idp->username_attribute: The attribute in the SAML response that holds the username. If you put here null, then it will use the NameID
+    #   idp->email_attribute: The attribute in the SAML response that holds the email address.
+    #   idp->username_domain: The domain that is appended to the provided username, if the provided username is not already in email format.
+    #   idp->required_group: A list of group names (casesensitive) in order to restrict who can use SAML login with this installation. Leave empty for no restriction.
+    #   idp->is_adfs: If you are using ADFS.
+    #   idp->honor_multifactors: Multifactor authentication can be bypassed with this flag for all SAML users (e.g. when you already enforce multifactor on the SAML provider).
+    #   idp->max_session_lifetime: The time in seconds that a session created throught SAML will live
+    #
+    #   sp->NameIDFormat: The normal nameformat parameter. (should only be set to transient if you have set a username attribute with username_attribute)
+    #   sp->attributeConsumingService: Only necessary if the IDP needs to be told to send some specific attributes
+    #   sp->x509cert: The X.509 cert
+    #   sp->privateKey: The corresponding private key of the X.509 cert
+    #
+    # There are a couple of more options next to those required ones below.
+    # More information can be found here https://github.com/onelogin/python3-saml
+    #
+    # A self-signed certificate can be generated with:
+    # openssl req -new -newkey rsa:2048 -x509 -days 3650 -nodes -sha256 -out sp_x509cert.crt -keyout sp_private_key.key
+    #
+    # To help you setup SAML, we have created a small "testsaml" command that should make things easier. You can execute it like:
+    # python3 psono/manage.py testsaml
+    #
+    # The number 1 in line 2 is the provider id. Users are matched by the constructed username.
+    #
+    # SAML_CONFIGURATIONS:
+    #     1:
+    #         idp:
+    #             entityId: "https://idp.exampple.com/metadata.php"
+    #             singleLogoutService:
+    #                 binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+    #                 url: "https://idp.exampple.com/SingleLogoutService.php"
+    #             singleSignOnService:
+    #                 binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+    #                 url: "https://idp.exampple.com/SingleSignOnService.php"
+    #             x509cert: "ABC...=="
+    #             groups_attribute: "groups"
+    #             username_attribute: 'username'
+    #             email_attribute: 'email'
+    #             username_domain: 'example.com'
+    #             required_group: []
+    #             is_adfs: false
+    #             honor_multifactors: true
+    #             max_session_lifetime: 86400
+    #         sp:
+    #             NameIDFormat: "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
+    #             assertionConsumerService:
+    #                 binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+    #             attributeConsumingService:
+    #                 serviceName: "Psono"
+    #                 serviceDescription: "Psono password manager"
+    #                 requestedAttributes:
+    #                     -
+    #                         attributeValue: []
+    #                         friendlyName: ""
+    #                         isRequired: false
+    #                         name: "attribute-that-has-to-be-requested-explicitely"
+    #                         nameFormat: ""
+    #             privateKey: "ABC...=="
+    #             singleLogoutService:
+    #                 binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+    #             x509cert: "ABC...=="
+    #         strict: true
+    #
+    # You need a couple of urls to configure the IDP correctly. If the server is accessible under https://example.com/server
+    # (e.g. https://example.com/server/healthcheck/ shows some json output) and the provider id is 1 as in the example
+    # above the folling urls are valid:
+    #
+    # for metadata :                   https://example.com/server/saml/1/metadata/
+    # for assertion consumer service : https://example.com/server/saml/1/acs/
+    # for single logout service :      https://example.com/server/saml/1/sls/
+    #
+    #
+    # ATTENTION: API kays currently bypass SAML authentication, that means API keys can still access secrets even if the
+    # user was disabled in SAML. API keys can be disabled with COMPLIANCE_DISABLE_API_KEYS
+
+    # Your Postgres Database credentials
+    # ATTENTION: If executed in a docker container, then "localhost" will resolve to the docker container, so
+    # "localhost" will not work as host. Use the public IP or DNS record of the server.
+    DATABASES:
+        default:
+            'ENGINE': 'django.db.backends.postgresql_psycopg2'
+            'NAME': 'psono'
+            'USER': 'psono'
+            'PASSWORD': ''
+            'HOST': 'psono-database'
+            'PORT': '5432'
+    # for master / slave replication setup comment in the following (all reads will be redirected to the slave
+    #    slave:
+    #        'ENGINE': 'django.db.backends.postgresql_psycopg2'
+    #        'NAME': 'YourPostgresDatabase'
+    #        'USER': 'YourPostgresUser'
+    #        'PASSWORD': 'YourPostgresPassword'
+    #        'HOST': 'YourPostgresHost'
+    #        'PORT': 'YourPostgresPort'
+
+    # The path to the template folder can be "shadowed" if required later
+    TEMPLATES: [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': ['/root/psono/templates'],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]

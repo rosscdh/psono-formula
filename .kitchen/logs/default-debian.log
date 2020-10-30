@@ -1,0 +1,58 @@
+I, [2020-10-30T10:27:22.808835 #5383]  INFO -- default-debian: -----> Setting up <default-debian>...
+I, [2020-10-30T10:27:22.809847 #5383]  INFO -- default-debian: Finished setting up <default-debian> (0m0.00s).
+I, [2020-10-30T10:27:22.809988 #5383]  INFO -- default-debian: -----> Verifying <default-debian>...
+I, [2020-10-30T10:27:22.810903 #5383]  INFO -- default-debian: [Shell] Verify on instance default-debian with state={:username=>"kitchen", :hostname=>"localhost", :ssh_key=>"/Users/ross/p/ross.crawford/bienert/psono/psono-formula/.kitchen/docker_id_rsa", :image_id=>"9f37b70e42f8", :container_id=>"c116141abebb9f864ecacc25f5caac2ff756aa8a0ef6ea89649370d7fbac3239", :port=>32768, :last_action=>"setup", :last_error=>nil}
+E, [2020-10-30T10:27:22.831651 #5383] ERROR -- default-debian: Verify failed on instance <default-debian>.
+E, [2020-10-30T10:27:22.831857 #5383] ERROR -- default-debian: ------Exception-------
+E, [2020-10-30T10:27:22.831888 #5383] ERROR -- default-debian: Class: Kitchen::ActionFailed
+E, [2020-10-30T10:27:22.831913 #5383] ERROR -- default-debian: Message: Action #verify failed for <default-debian>.
+E, [2020-10-30T10:27:22.831941 #5383] ERROR -- default-debian: ----------------------
+E, [2020-10-30T10:27:22.831970 #5383] ERROR -- default-debian: ------Backtrace-------
+E, [2020-10-30T10:27:22.831994 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:82:in `rescue in shellout'
+E, [2020-10-30T10:27:22.832023 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:79:in `shellout'
+E, [2020-10-30T10:27:22.832055 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:48:in `call'
+E, [2020-10-30T10:27:22.832084 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:469:in `block in verify_action'
+E, [2020-10-30T10:27:22.832109 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:563:in `synchronize_or_call'
+E, [2020-10-30T10:27:22.832131 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:524:in `block in action'
+E, [2020-10-30T10:27:22.832158 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+E, [2020-10-30T10:27:22.832181 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:523:in `action'
+E, [2020-10-30T10:27:22.832204 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:461:in `verify_action'
+E, [2020-10-30T10:27:22.832226 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:392:in `block (2 levels) in transition_to'
+E, [2020-10-30T10:27:22.832247 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/lifecycle_hooks.rb:44:in `run_with_hooks'
+E, [2020-10-30T10:27:22.832274 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:391:in `block in transition_to'
+E, [2020-10-30T10:27:22.832294 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `each'
+E, [2020-10-30T10:27:22.832319 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `transition_to'
+E, [2020-10-30T10:27:22.832345 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:161:in `verify'
+E, [2020-10-30T10:27:22.832391 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `public_send'
+E, [2020-10-30T10:27:22.832415 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `run_action_in_thread'
+E, [2020-10-30T10:27:22.832438 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:166:in `block (2 levels) in run_action'
+E, [2020-10-30T10:27:22.832458 #5383] ERROR -- default-debian: ----End Backtrace-----
+E, [2020-10-30T10:27:22.832480 #5383] ERROR -- default-debian: ---Nested Exception---
+E, [2020-10-30T10:27:22.832504 #5383] ERROR -- default-debian: Class: Mixlib::ShellOut::ShellCommandFailed
+E, [2020-10-30T10:27:22.832532 #5383] ERROR -- default-debian: Message: Expected process to exit with [0], but received '127'
+---- Begin output of .venv/bin/py.test -s --connection=docker  --hosts=root@$KITCHEN_CONTAINER_ID --html=reports/$KITCHEN_INSTANCE.html --self-contained-html --junit-xml=reports/junit-$KITCHEN_INSTANCE.xml tests/integration/$KITCHEN_SUITE ----
+STDOUT: 
+STDERR: sh: .venv/bin/py.test: No such file or directory
+---- End output of .venv/bin/py.test -s --connection=docker  --hosts=root@$KITCHEN_CONTAINER_ID --html=reports/$KITCHEN_INSTANCE.html --self-contained-html --junit-xml=reports/junit-$KITCHEN_INSTANCE.xml tests/integration/$KITCHEN_SUITE ----
+Ran .venv/bin/py.test -s --connection=docker  --hosts=root@$KITCHEN_CONTAINER_ID --html=reports/$KITCHEN_INSTANCE.html --self-contained-html --junit-xml=reports/junit-$KITCHEN_INSTANCE.xml tests/integration/$KITCHEN_SUITE returned 127
+E, [2020-10-30T10:27:22.832557 #5383] ERROR -- default-debian: ----------------------
+E, [2020-10-30T10:27:22.832582 #5383] ERROR -- default-debian: ------Backtrace-------
+E, [2020-10-30T10:27:22.832604 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:82:in `rescue in shellout'
+E, [2020-10-30T10:27:22.832624 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:79:in `shellout'
+E, [2020-10-30T10:27:22.832647 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:48:in `call'
+E, [2020-10-30T10:27:22.832670 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:469:in `block in verify_action'
+E, [2020-10-30T10:27:22.832692 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:563:in `synchronize_or_call'
+E, [2020-10-30T10:27:22.832712 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:524:in `block in action'
+E, [2020-10-30T10:27:22.832732 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+E, [2020-10-30T10:27:22.832757 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:523:in `action'
+E, [2020-10-30T10:27:22.832779 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:461:in `verify_action'
+E, [2020-10-30T10:27:22.832804 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:392:in `block (2 levels) in transition_to'
+E, [2020-10-30T10:27:22.832827 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/lifecycle_hooks.rb:44:in `run_with_hooks'
+E, [2020-10-30T10:27:22.832850 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:391:in `block in transition_to'
+E, [2020-10-30T10:27:22.832889 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `each'
+E, [2020-10-30T10:27:22.832917 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `transition_to'
+E, [2020-10-30T10:27:22.832942 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:161:in `verify'
+E, [2020-10-30T10:27:22.832965 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `public_send'
+E, [2020-10-30T10:27:22.832985 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `run_action_in_thread'
+E, [2020-10-30T10:27:22.833010 #5383] ERROR -- default-debian: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:166:in `block (2 levels) in run_action'
+E, [2020-10-30T10:27:22.833033 #5383] ERROR -- default-debian: ----End Backtrace-----

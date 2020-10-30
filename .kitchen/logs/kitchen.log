@@ -1,0 +1,89 @@
+I, [2020-10-30T10:27:22.447798 #5383]  INFO -- Kitchen: -----> Starting Test Kitchen (v2.7.2)
+I, [2020-10-30T10:27:22.808745 #5383]  INFO -- Kitchen: -----> Setting up <default-debian>...
+I, [2020-10-30T10:27:22.809939 #5383]  INFO -- Kitchen: -----> Verifying <default-debian>...
+E, [2020-10-30T10:27:22.834158 #5383] ERROR -- Kitchen: ------Exception-------
+E, [2020-10-30T10:27:22.834211 #5383] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2020-10-30T10:27:22.834247 #5383] ERROR -- Kitchen: Message: 1 actions failed.
+>>>>>>     Verify failed on instance <default-debian>.  Please see .kitchen/logs/default-debian.log for more details
+E, [2020-10-30T10:27:22.834280 #5383] ERROR -- Kitchen: ----------------------
+E, [2020-10-30T10:27:22.834303 #5383] ERROR -- Kitchen: ------Backtrace-------
+E, [2020-10-30T10:27:22.834332 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:181:in `report_errors'
+E, [2020-10-30T10:27:22.834360 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:172:in `run_action'
+E, [2020-10-30T10:27:22.834385 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command/action.rb:35:in `block in call'
+E, [2020-10-30T10:27:22.834407 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+E, [2020-10-30T10:27:22.834427 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command/action.rb:33:in `call'
+E, [2020-10-30T10:27:22.834451 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/cli.rb:52:in `perform'
+E, [2020-10-30T10:27:22.834477 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/cli.rb:198:in `block (2 levels) in <class:CLI>'
+E, [2020-10-30T10:27:22.834500 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/thor-1.0.1/lib/thor/command.rb:27:in `run'
+E, [2020-10-30T10:27:22.834530 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/thor-1.0.1/lib/thor/invocation.rb:127:in `invoke_command'
+E, [2020-10-30T10:27:22.834555 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/thor-1.0.1/lib/thor.rb:392:in `dispatch'
+E, [2020-10-30T10:27:22.834581 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/thor-1.0.1/lib/thor/base.rb:485:in `start'
+E, [2020-10-30T10:27:22.834604 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/bin/kitchen:11:in `block in <top (required)>'
+E, [2020-10-30T10:27:22.834626 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/errors.rb:170:in `with_friendly_errors'
+E, [2020-10-30T10:27:22.834649 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/bin/kitchen:11:in `<top (required)>'
+E, [2020-10-30T10:27:22.834672 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/bin/kitchen:23:in `load'
+E, [2020-10-30T10:27:22.834694 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/bin/kitchen:23:in `<top (required)>'
+E, [2020-10-30T10:27:22.834715 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/cli/exec.rb:74:in `load'
+E, [2020-10-30T10:27:22.834736 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/cli/exec.rb:74:in `kernel_load'
+E, [2020-10-30T10:27:22.834757 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/cli/exec.rb:28:in `run'
+E, [2020-10-30T10:27:22.834780 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/cli.rb:463:in `exec'
+E, [2020-10-30T10:27:22.834809 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+E, [2020-10-30T10:27:22.834850 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/vendor/thor/lib/thor/invocation.rb:126:in `invoke_command'
+E, [2020-10-30T10:27:22.834872 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/vendor/thor/lib/thor.rb:387:in `dispatch'
+E, [2020-10-30T10:27:22.834895 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/cli.rb:27:in `dispatch'
+E, [2020-10-30T10:27:22.834916 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/vendor/thor/lib/thor/base.rb:466:in `start'
+E, [2020-10-30T10:27:22.834936 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/cli.rb:18:in `start'
+E, [2020-10-30T10:27:22.834959 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/bundler-1.17.2/exe/bundle:30:in `block in <top (required)>'
+E, [2020-10-30T10:27:22.834979 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/bundler/friendly_errors.rb:124:in `with_friendly_errors'
+E, [2020-10-30T10:27:22.835002 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/bundler-1.17.2/exe/bundle:22:in `<top (required)>'
+E, [2020-10-30T10:27:22.835022 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/bin/bundle:23:in `load'
+E, [2020-10-30T10:27:22.835042 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/bin/bundle:23:in `<main>'
+E, [2020-10-30T10:27:22.835062 #5383] ERROR -- Kitchen: ----End Backtrace-----
+E, [2020-10-30T10:27:22.835085 #5383] ERROR -- Kitchen: -Composite Exception--
+E, [2020-10-30T10:27:22.835104 #5383] ERROR -- Kitchen: Class: Kitchen::InstanceFailure
+E, [2020-10-30T10:27:22.835124 #5383] ERROR -- Kitchen: Message: Verify failed on instance <default-debian>.  Please see .kitchen/logs/default-debian.log for more details
+E, [2020-10-30T10:27:22.835144 #5383] ERROR -- Kitchen: ----------------------
+E, [2020-10-30T10:27:22.835163 #5383] ERROR -- Kitchen: ------Backtrace-------
+E, [2020-10-30T10:27:22.835185 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:82:in `rescue in shellout'
+E, [2020-10-30T10:27:22.835205 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:79:in `shellout'
+E, [2020-10-30T10:27:22.835226 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:48:in `call'
+E, [2020-10-30T10:27:22.835248 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:469:in `block in verify_action'
+E, [2020-10-30T10:27:22.835269 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:563:in `synchronize_or_call'
+E, [2020-10-30T10:27:22.835300 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:524:in `block in action'
+E, [2020-10-30T10:27:22.835320 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+E, [2020-10-30T10:27:22.835340 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:523:in `action'
+E, [2020-10-30T10:27:22.835360 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:461:in `verify_action'
+E, [2020-10-30T10:27:22.835380 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:392:in `block (2 levels) in transition_to'
+E, [2020-10-30T10:27:22.835404 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/lifecycle_hooks.rb:44:in `run_with_hooks'
+E, [2020-10-30T10:27:22.835439 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:391:in `block in transition_to'
+E, [2020-10-30T10:27:22.835460 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `each'
+E, [2020-10-30T10:27:22.835481 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `transition_to'
+E, [2020-10-30T10:27:22.835501 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:161:in `verify'
+E, [2020-10-30T10:27:22.835521 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `public_send'
+E, [2020-10-30T10:27:22.835541 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `run_action_in_thread'
+E, [2020-10-30T10:27:22.835562 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:166:in `block (2 levels) in run_action'
+E, [2020-10-30T10:27:22.835582 #5383] ERROR -- Kitchen: ----End Backtrace-----
+E, [2020-10-30T10:27:22.835602 #5383] ERROR -- Kitchen: ---Nested Exception---
+E, [2020-10-30T10:27:22.835622 #5383] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2020-10-30T10:27:22.835644 #5383] ERROR -- Kitchen: Message: Action #verify failed for <default-debian>.
+E, [2020-10-30T10:27:22.835664 #5383] ERROR -- Kitchen: ----------------------
+E, [2020-10-30T10:27:22.835683 #5383] ERROR -- Kitchen: ------Backtrace-------
+E, [2020-10-30T10:27:22.835702 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:82:in `rescue in shellout'
+E, [2020-10-30T10:27:22.835722 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:79:in `shellout'
+E, [2020-10-30T10:27:22.835745 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/verifier/shell.rb:48:in `call'
+E, [2020-10-30T10:27:22.835765 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:469:in `block in verify_action'
+E, [2020-10-30T10:27:22.835786 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:563:in `synchronize_or_call'
+E, [2020-10-30T10:27:22.835806 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:524:in `block in action'
+E, [2020-10-30T10:27:22.835826 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/2.6.0/benchmark.rb:293:in `measure'
+E, [2020-10-30T10:27:22.835848 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:523:in `action'
+E, [2020-10-30T10:27:22.835868 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:461:in `verify_action'
+E, [2020-10-30T10:27:22.835888 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:392:in `block (2 levels) in transition_to'
+E, [2020-10-30T10:27:22.835908 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/lifecycle_hooks.rb:44:in `run_with_hooks'
+E, [2020-10-30T10:27:22.835931 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:391:in `block in transition_to'
+E, [2020-10-30T10:27:22.835951 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `each'
+E, [2020-10-30T10:27:22.835986 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:390:in `transition_to'
+E, [2020-10-30T10:27:22.836007 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/instance.rb:161:in `verify'
+E, [2020-10-30T10:27:22.836032 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `public_send'
+E, [2020-10-30T10:27:22.836055 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:195:in `run_action_in_thread'
+E, [2020-10-30T10:27:22.836075 #5383] ERROR -- Kitchen: /Users/ross/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/test-kitchen-2.7.2/lib/kitchen/command.rb:166:in `block (2 levels) in run_action'
+E, [2020-10-30T10:27:22.836095 #5383] ERROR -- Kitchen: ----End Backtrace-----

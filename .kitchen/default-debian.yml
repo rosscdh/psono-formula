@@ -1,0 +1,9 @@
+---
+username: kitchen
+hostname: localhost
+ssh_key: "/Users/ross/p/ross.crawford/bienert/psono/psono-formula/.kitchen/docker_id_rsa"
+image_id: 9f37b70e42f8
+container_id: c116141abebb9f864ecacc25f5caac2ff756aa8a0ef6ea89649370d7fbac3239
+port: 32768
+last_action: setup
+last_error: Kitchen::ActionFailed

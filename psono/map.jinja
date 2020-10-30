@@ -1,0 +1,2 @@
+{% import_yaml 'psono/config/defaults.yaml' as preconfig %}
+{% set config = salt.pillar.get( 'psono', default=preconfig.psono, merge=True ) %}

@@ -1,0 +1,92 @@
+{%- from "psono/map.jinja" import config with context %}
+{%- set env_file = '{}/.env'.format(config.location) %}}
+{%- set nginx_conf = '{}/nginx.conf'.format(config.location) %}}
+{%- set config_json = '{}/config.json'.format(config.location) %}}
+{%- set settings_yaml = '{}/settings.yaml'.format(config.location) %}}
+version: '3'
+
+services:
+  {%- if config.images.database and config.images.database.enable == 'true' %}}
+  psono-database:
+    image: {{ config.images.database | default('psono/psono-postgres:latest') }}
+    restart: UnlessStopped
+    env_file:
+    - {{ env_file }}
+    volumes:
+    - psono-db-data:/var/lib/postgresql/data
+    networks:
+    - psono-backend
+  {%- endif %}}
+
+  {%- if config.images.fileserver and config.images.fileserver.enable == 'true' %}}
+  psono-fileserver:
+    image: image: {{ config.images.fileserver | default('psono/psono-fileserver:latest') }}
+    restart: UnlessStopped
+    volumes:
+    - {{ settings_yaml }}:/root/.psono_server/settings.yaml:ro
+    - {{ config_json }}:/usr/share/nginx/html/config.json:ro
+    env_file:
+    - {{ env_file }}
+    networks:
+    - psono-backend
+  {%- endif %}}
+
+  psono-client:
+    image: image: {{ config.images.client | default('psono/psono-client:latest') }}
+    restart: UnlessStopped
+    # ports:
+    # - 10102:80
+    env_file:
+    - {{ env_file }}
+    volumes:
+    - {{ config_json }}:/usr/share/nginx/html/config.json:ro
+    networks:
+    - psono-backend
+
+  psono-server:
+    image: image: {{ config.images.server | default('psono/psono-server:latest') }}
+    restart: UnlessStopped
+    # ports:
+    # - 10103:80
+    env_file:
+    - {{ env_file }}
+    volumes:
+    - {{ settings_yaml }}:/root/.psono_server/settings.yaml:ro
+    - {{ config_json }}:/usr/share/nginx/html/config.json:ro
+    networks:
+    - psono-backend
+
+
+  psono-admin:
+    image: image: {{ config.images.admin | default('psono/psono-admin-client:latest') }}
+    restart: UnlessStopped
+    # ports:
+    # - 10104:80
+    env_file:
+    - {{ env_file }}
+    volumes:
+    - {{ config_json }}:/usr/share/nginx/html/config.json:ro
+    networks:
+    - psono-backend
+
+  nginx:
+    image: image: {{ config.images.nginx | default('nginx:latest') }}
+    restart: UnlessStopped
+    ports:
+    {%- for port_map in config.images.nginx.ports %}}
+    - '{{ port_map }}'
+    {%- endfor %}}
+    env_file:
+    - {{ env_file }}
+    volumes:
+    - {{ nginx_conf }}:/etc/nginx/conf.d/default.conf:ro
+    networks:
+    - psono-backend
+
+networks:
+  psono-backend: {}
+
+{%- if config.images.database and config.images.database == 'true' %}}
+volumes:
+  psono-db-data: {}
+{%- endif %}}
