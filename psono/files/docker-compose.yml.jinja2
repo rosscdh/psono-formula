@@ -65,7 +65,7 @@ services:
     env_file:
     - {{ env_file }}
     volumes:
-    - {{ config_json }}:/usr/share/nginx/html/config.json:ro
+    - {{ config_json }}:/usr/share/nginx/html/portal/config.json:ro
     networks:
     - psono-backend
 
@@ -88,5 +88,5 @@ networks:
 
 {%- if config.images.database and config.images.database == 'true' %}
 volumes:
-  psono-db-data: {}
+  psono-db-data:
 {%- endif %}
