@@ -28,9 +28,10 @@ install_compose:
 
 
 {{ config.location }}/config.json:
-  file.serialize:
+  file.managed:
     - serializer: json
-    - dataset: {{ config.config_json }}
+    - contents: |
+      {{ config.config_json }}
 
 
 {{ config.location }}/nginx.conf:
