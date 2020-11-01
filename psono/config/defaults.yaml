@@ -144,10 +144,10 @@ psono:
     #   8abcdefg...
 
     # Enables the management API, required for the psono-admin-client / admin portal (Default is set to False)
-    # MANAGEMENT_ENABLED: True
+    MANAGEMENT_ENABLED: True
 
     # Enables the fileserver API, required for the psono-fileserver
-    FILESERVER_HANDLER_ENABLED: True
+    FILESERVER_HANDLER_ENABLED: False
 
     # Enables files for the client
     # FILES_ENABLED: False
