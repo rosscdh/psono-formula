@@ -5,7 +5,7 @@ psono_python-pip:
   - name: python-pip
 
 
-install_compose:
+psono_install_compose:
   pip.installed:
   - name: docker-compose
   - require:
