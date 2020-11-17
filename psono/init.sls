@@ -26,6 +26,10 @@ install_compose:
       - default_flow_style: True
       - indent: 4
 
+{{ config.location }}/.env:
+  file.managed:
+    - contents: |
+        DESCRIPTION="psono password manager"
 
 {{ config.location }}/config.json:
   file.managed:
