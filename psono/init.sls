@@ -55,8 +55,10 @@ install_compose:
 #   - name: {{ config.location }}/docker-compose.yml
 
 
-# restart_psono:
-#   dockercompose.restart:
-#   - watch:
-#     - file: {{ config.location }}/.env
-#     - file: {{ config.location }}/docker-compose.yml
+restart_psono:
+  dockercompose.restart:
+  - watch:
+    - file: {{ config.location }}/.env
+    - file: {{ config.location }}/docker-compose.yml
+    - file: {{ config.location }}/nginx.conf
+    - file: {{ config.location }}/config.json
