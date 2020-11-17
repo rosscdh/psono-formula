@@ -55,10 +55,19 @@ psono_install_compose:
 #   dockercompose.up:
 #   - name: {{ config.location }}/docker-compose.yml
 
-
-restart_psono:
+psono_down:
   cmd.run:
-  - name: docker-compose restart
+  - name: docker-compose down
+  - cwd: {{ config.location }}
+  - watch:
+    - file: {{ config.location }}/.env
+    - file: {{ config.location }}/docker-compose.yml
+    - file: {{ config.location }}/nginx.conf
+    - file: {{ config.location }}/config.json
+
+psono_up:
+  cmd.run:
+  - name: docker-compose up
   - cwd: {{ config.location }}
   - watch:
     - file: {{ config.location }}/.env
