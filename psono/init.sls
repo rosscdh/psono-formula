@@ -1,7 +1,8 @@
 {%- from "psono/map.jinja" import config with context %}
 
-python-pip:
-  pkg.installed
+psono_python-pip:
+  pkg.installed:
+  - name: python-pip
 
 
 install_compose:
