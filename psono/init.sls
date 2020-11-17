@@ -57,7 +57,9 @@ psono_install_compose:
 
 
 restart_psono:
-  dockercompose.restart:
+  cmd.run:
+  - name: docker-compose restart -d
+  - cwd: {{ config.location }}
   - watch:
     - file: {{ config.location }}/.env
     - file: {{ config.location }}/docker-compose.yml
