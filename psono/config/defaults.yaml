@@ -25,6 +25,11 @@ psono:
     database:
       image: psono/psono-postgres:latest
       enable: 'false'
+    #mailhog
+    mailhog:
+     image: mailhog/mailhog:latest
+     port: 9025
+     enable: 'true'
 
   config_json:
     backend_servers:
