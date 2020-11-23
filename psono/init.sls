@@ -36,7 +36,7 @@ psono_install_compose:
   file.managed:
     - serializer: json
     - contents: |
-        {{ config.config_json }}
+        {{ config.config_json | json }}
 
 
 {{ config.location }}/nginx.conf:
