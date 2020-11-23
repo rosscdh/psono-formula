@@ -83,18 +83,19 @@ services:
     networks:
     - psono-backend
 
+{%- if config.images.mailhog and config.images.mailhog.enable == 'true' %}
   mailhog:
     image: {{ config.images.mailhog.image | default('mailhog/mailhog:latest') }}
     networks:
     - psono-backend
     ports:
-    - {{ config.images.mailhog.port | default("9025") }}:1025
-
+    - {{ config.images.mailhog.port | default("9025") }}:8025
+{%- endif %}
 
 networks:
   psono-backend: {}
 
-{%- if config.images.database and config.images.database == 'true' %}
+{%- if config.images.database and config.images.database.enable == 'true' %}
 volumes:
   psono-db-data:
 {%- endif %}
