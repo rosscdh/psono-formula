@@ -51,23 +51,9 @@ psono_install_compose:
   - template: jinja
 
 
-# start_psono:
-#   dockercompose.up:
-#   - name: {{ config.location }}/docker-compose.yml
-
-psono_down:
+psono_restart:
   cmd.run:
-  - name: docker-compose down
-  - cwd: {{ config.location }}
-  - watch:
-    - file: {{ config.location }}/.env
-    - file: {{ config.location }}/docker-compose.yml
-    - file: {{ config.location }}/nginx.conf
-    - file: {{ config.location }}/config.json
-
-psono_up:
-  cmd.run:
-  - name: docker-compose up
+  - name: docker-compose up -d
   - cwd: {{ config.location }}
   - watch:
     - file: {{ config.location }}/.env
