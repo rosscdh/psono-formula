@@ -83,6 +83,14 @@ services:
     networks:
     - psono-backend
 
+  mailhog:
+    image: {{ config.images.mailhog.image | default('mailhog/mailhog:latest') }}
+    networks:
+    - psono-backend
+    ports:
+    - {{ config.images.mailhog.port | default("9025") }}:1025
+
+
 networks:
   psono-backend: {}
 
