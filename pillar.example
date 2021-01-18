@@ -1,6 +1,6 @@
 psono:
   host:
-    name: pw.bienert.tech
+    name: pw.example.com
     port: 80
 
   location: /opt/psono
@@ -66,7 +66,7 @@ psono:
     ALLOWED_HOSTS: ['*']
 
     # Should be your domain without "www.". Will be the last part of the username
-    ALLOWED_DOMAINS: ['pw.bienert.tech']
+    ALLOWED_DOMAINS: ['pw.example.com']
 
     # If you want to disable registration, you can comment in the following line
     # ALLOW_REGISTRATION: False
@@ -82,12 +82,12 @@ psono:
 
     # Should be the URL of the host under which the host is reachable
     # If you open the url and append /info/ to it you should have a text similar to {"info":"{\"version\": \"....}
-    HOST_URL: 'https://pw.bienert.tech/server'
+    HOST_URL: 'https://pw.example.com/server'
 
     # The email used to send emails, e.g. for activation
     # ATTENTION: If executed in a docker container, then "localhost" will resolve to the docker container, so
     # "localhost" will not work as host. Use the public IP or DNS record of the server.
-    EMAIL_FROM: 'no-reply@pw.bienert.tech'
+    EMAIL_FROM: 'no-reply@pw.example.com'
     EMAIL_HOST: 'localhost'
     EMAIL_HOST_USER: ''
     EMAIL_HOST_PASSWORD : ''
